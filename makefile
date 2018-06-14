@@ -6,6 +6,9 @@ BehavioralNode.o: BehavioralNode.h BehavioralNode.cpp
 DecoratorNode.o: BehavioralNode.h DecoratorNode.h DecoratorNode.cpp
 	g++ -c -g "DecoratorNode.cpp" -o DecoratorNode.o
 
+Inverter.o: DecoratorNode.h Inverter.h Inverter.cpp
+	g++ -c -g "Inverter.cpp" -o Inverter.o
+
 LeafNode.o: BehavioralNode.h LeafNode.h LeafNode.cpp
 	g++ -c -g "LeafNode.cpp" -o LeafNode.o
 
@@ -21,6 +24,9 @@ SelectorNode.o: CompositeNode.h SelectorNode.h SelectorNode.cpp
 SequenceNode.o: CompositeNode.h SequenceNode.h SequenceNode.cpp
 	g++ -c -g "SequenceNode.cpp" -o SequenceNode.o
 
+RandomSelectorNode.o: CompositeNode.h RandomSelectorNode.h RandomSelectorNode.cpp
+	g++ -c -g "RandomSelectorNode.cpp" -o RandomSelectorNode.o
+
 TestLeaf.o: LeafNode.h TestLeaf.h TestLeaf.cpp
 	g++ -c -g "TestLeaf.cpp" -o TestLeaf.o
 
@@ -30,9 +36,9 @@ BehavioralTree.o: BehavioralTree.h BehavioralTree.cpp
 BTreeConsole.o: CompositeNode.h SequenceNode.h BehavioralTree.h TestLeaf.h BTreeConsole.cpp
 	g++ -c -g "BTreeConsole.cpp" -o BTreeConsole.o
 
-BTree: BehavioralNode.o DecoratorNode.o LeafNode.o CompositeNode.o MasterNode.o SelectorNode.o SequenceNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
+BTree: BehavioralNode.o DecoratorNode.o Inverter.o LeafNode.o CompositeNode.o MasterNode.o SelectorNode.o SequenceNode.o RandomSelectorNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
 	@echo "Building BTree App"
-	g++ -o BTree -g BehavioralNode.o DecoratorNode.o LeafNode.o CompositeNode.o  MasterNode.o SelectorNode.o SequenceNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
+	g++ -o BTree -g BehavioralNode.o DecoratorNode.o Inverter.o LeafNode.o CompositeNode.o  MasterNode.o SelectorNode.o SequenceNode.o RandomSelectorNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
 
 clean:
 	@echo "Removing object files and executable"

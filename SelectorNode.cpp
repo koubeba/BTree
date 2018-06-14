@@ -51,6 +51,7 @@ Status SelectorNode::processInit() {
     break;
   }
   std::cout << std::endl;
+  return result;
 }
 
 Status SelectorNode::processContinue() {
@@ -75,4 +76,5 @@ Status SelectorNode::processContinue() {
     break;
   }
   std::cout << std::endl;
+  return result;
 }
