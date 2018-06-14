@@ -9,6 +9,12 @@ DecoratorNode.o: BehavioralNode.h DecoratorNode.h DecoratorNode.cpp
 Inverter.o: DecoratorNode.h Inverter.h Inverter.cpp
 	g++ -c -g "Inverter.cpp" -o Inverter.o
 
+Repeater.o: DecoratorNode.h Repeater.h Repeater.cpp
+	g++ -c -g "Repeater.cpp" -o Repeater.o
+
+RepeatUntilFail.o: DecoratorNode.h RepeatUntilFail.h RepeatUntilFail.cpp
+	g++ -c -g "RepeatUntilFail.cpp" -o RepeatUntilFail.o
+
 LeafNode.o: BehavioralNode.h LeafNode.h LeafNode.cpp
 	g++ -c -g "LeafNode.cpp" -o LeafNode.o
 
@@ -36,9 +42,9 @@ BehavioralTree.o: BehavioralTree.h BehavioralTree.cpp
 BTreeConsole.o: CompositeNode.h SequenceNode.h BehavioralTree.h TestLeaf.h BTreeConsole.cpp
 	g++ -c -g "BTreeConsole.cpp" -o BTreeConsole.o
 
-BTree: BehavioralNode.o DecoratorNode.o Inverter.o LeafNode.o CompositeNode.o MasterNode.o SelectorNode.o SequenceNode.o RandomSelectorNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
+BTree: BehavioralNode.o DecoratorNode.o Inverter.o Repeater.o RepeatUntilFail.o LeafNode.o CompositeNode.o MasterNode.o SelectorNode.o SequenceNode.o RandomSelectorNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
 	@echo "Building BTree App"
-	g++ -o BTree -g BehavioralNode.o DecoratorNode.o Inverter.o LeafNode.o CompositeNode.o  MasterNode.o SelectorNode.o SequenceNode.o RandomSelectorNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
+	g++ -o BTree -g BehavioralNode.o DecoratorNode.o Inverter.o Repeater.o RepeatUntilFail.o LeafNode.o CompositeNode.o  MasterNode.o SelectorNode.o SequenceNode.o RandomSelectorNode.o TestLeaf.o BehavioralTree.o BTreeConsole.o
 
 clean:
 	@echo "Removing object files and executable"
