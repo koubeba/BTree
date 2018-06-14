@@ -18,6 +18,7 @@ Status SelectorNode::processChildren() {
         }
     }
   }
+  setAllChildrenToUnvisited();
   status = FAILURE;
   return status;
 }
@@ -27,7 +28,7 @@ void SelectorNode::setNumber(int number) {
 }
 
 Status SelectorNode::processInit() {
-  std::cout << "Initialize the process." << i << "Setting to visited. Status: ";
+  std::cout << "Initialize the selector process." << i << "Setting to visited. Status: ";
   switch (status) {
     case RUNNING: std::cout << "running ";
     break;
@@ -40,7 +41,7 @@ Status SelectorNode::processInit() {
   visited = true;
   Status result = processChildren();
 
-  std::cout << "Result of children process: ";
+  std::cout << "Result of selector's children process: ";
   switch (result) {
     case RUNNING: std::cout << "running ";
     break;
@@ -53,7 +54,7 @@ Status SelectorNode::processInit() {
 }
 
 Status SelectorNode::processContinue() {
-  std::cout << "Continue the process." << i << " Status: ";
+  std::cout << "Continue the selector process." << i << " Status: ";
   switch (status) {
     case RUNNING: std::cout << "running ";
     break;
@@ -64,7 +65,7 @@ Status SelectorNode::processContinue() {
   }
   std::cout << std::endl;
   Status result= processChildren();
-  std::cout << "Result of children process: ";
+  std::cout << "Result of selector's children process: ";
   switch (result) {
     case RUNNING: std::cout << "running ";
     break;

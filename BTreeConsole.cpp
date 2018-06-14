@@ -1,4 +1,5 @@
 #include "SelectorNode.h"
+#include "SequenceNode.h"
 #include "TestLeaf.h"
 #include "BehavioralTree.h"
 
@@ -6,8 +7,8 @@
 #include <stdlib.h>
 
 int main() {
-  std::cout << "Creating a selector node" << std::endl;
-  SelectorNode sN1 = SelectorNode();
+  std::cout << "Creating a sequence node" << std::endl;
+  SequenceNode sN1 = SequenceNode();
 
   std::cout << "Adding a leaf node" << std::endl;
   sN1.addChild(new TestLeaf(1));
@@ -43,8 +44,9 @@ int main() {
   std::cout << "Creating a behavioral tree" << std::endl;
   BehavioralTree bTree = BehavioralTree(&sN);
 
-for (int i=0; i<10; i++) {
+for (int i=0; i<5; i++) {
   bTree.iterate();
+  std::cout << std::endl;
 }
 
 
